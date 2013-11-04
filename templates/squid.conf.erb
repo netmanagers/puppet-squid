@@ -1,0 +1,12 @@
+# This file is managed by Puppet. DO NOT EDIT.
+
+<% if scope.lookupvar('squid3::visible_hostname') != '' -%>
+visible_hostname "<%= scope.lookupvar('squid3::visible_hostname') %>"
+<% end -%>
+http_port <%= scope.lookupvar('squid3::squid_ip') %> <%= scope.lookupvar('squid3::squid_port') %>
+
+cache_peer <%= scope.lookupvar('squid3::cache_peer') %> sibling <%= scope.lookupvar('squid3::sibling') %> proxy-only name=<%= scope.lookupvar('squid3::sibling_name') %>
+
+
+include /etc/squid3/conf.d/*.conf
+
