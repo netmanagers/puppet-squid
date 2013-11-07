@@ -6,8 +6,17 @@ describe 'squid' do
   let(:node) { 'rspec.example42.com' }
   let(:facts) { { :ipaddress => '10.42.42.42' } }
 
-  describe 'Test standard installation' do
+  describe 'Test standard Centos installation' do
+    let(:facts) { { :operatingsystem => 'Centos' } }
     it { should contain_package('squid').with_ensure('present') }
+    it { should contain_service('squid').with_ensure('running') }
+    it { should contain_service('squid').with_enable('true') }
+    it { should contain_file('squid.conf').with_ensure('present') }
+  end
+
+  describe 'Test standard Debian installation' do
+    let(:facts) { { :operatingsystem => 'Debian' } }
+    it { should contain_package('squid3').with_ensure('present') }
     it { should contain_service('squid').with_ensure('running') }
     it { should contain_service('squid').with_enable('true') }
     it { should contain_file('squid.conf').with_ensure('present') }

@@ -17,6 +17,7 @@ class squid::params {
   ### Application related parameters
 
   $package = $::operatingsystem ? {
+    /(?i:Debian|Ubuntu|Mint)/ => 'squid3',
     default => 'squid',
   }
 
@@ -41,7 +42,7 @@ class squid::params {
   }
 
   $config_dir = $::operatingsystem ? {
-    /(?i:Debian|Ubuntu|Mint)/ => '/etc/squid',
+    /(?i:Debian|Ubuntu|Mint)/ => '/etc/squid3',
     default => '/etc/squid',
   }
 
@@ -122,5 +123,30 @@ class squid::params {
   $cache_peer = ''
   $sibling = ''
   $sibling_name = ''
-
+  $icp_port = ''
+  $cache_mem = ''
+  $cache_swap_low = ''
+  $cache_swap_high = ''
+  $maximum_object_size = ''
+  $maximum_object_size_in_memory = ''
+  $cache_replacement_policy = ''
+  $error_directory = ''
+  $half_closed_clients = ''
+  $shutdown_lifetime = ''
+  $buffered_logs = ''
+  $pipeline_prefetch = ''
+  $client_persistent_connections = ''
+  $dead_peer_timeout = ''
+  $quick_abort_min = ''
+  $quick_abort_max = ''
+  $quick_abort_pct = ''
+  $via = ''
+  $forwarded_for = ''
+  $hierarchy_stoplist = ''
+  $cache_dir = ''
+  $cache_access_log = ''
+  $cache_store_log = ''
+  $ftp_passive = ''
+  $snmp_port = ''
+  $coredump_dir = ''
 }
