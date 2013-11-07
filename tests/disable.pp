@@ -1,5 +1,5 @@
 # Class' service disabling
 #
-class { 'squid3':
+class { 'squid':
   disable => true,
 }

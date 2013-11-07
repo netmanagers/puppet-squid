@@ -1,27 +1,27 @@
-# Class: squid3::params
+# Class: squid::params
 #
-# This class defines default parameters used by the main module class squid3
+# This class defines default parameters used by the main module class squid
 # Operating Systems differences in names and paths are addressed here
 #
 # == Variables
 #
-# Refer to squid3 class for the variables defined here.
+# Refer to squid class for the variables defined here.
 #
 # == Usage
 #
 # This class is not intended to be used directly.
 # It may be imported or inherited by other classes
 #
-class squid3::params {
+class squid::params {
 
   ### Application related parameters
 
   $package = $::operatingsystem ? {
-    default => 'squid3',
+    default => 'squid',
   }
 
   $service = $::operatingsystem ? {
-    default => 'squid3',
+    default => 'squid',
   }
 
   $service_status = $::operatingsystem ? {
@@ -29,7 +29,7 @@ class squid3::params {
   }
 
   $process = $::operatingsystem ? {
-    default => 'squid3',
+    default => 'squid',
   }
 
   $process_args = $::operatingsystem ? {
@@ -37,16 +37,16 @@ class squid3::params {
   }
 
   $process_user = $::operatingsystem ? {
-    default => 'squid3',
+    default => 'squid',
   }
 
   $config_dir = $::operatingsystem ? {
-    /(?i:Debian|Ubuntu|Mint)/ => '/etc/squid3',
+    /(?i:Debian|Ubuntu|Mint)/ => '/etc/squid',
     default => '/etc/squid',
   }
 
   $config_file = $::operatingsystem ? {
-    /(?i:Debian|Ubuntu|Mint)/ => '/etc/squid3/squid.conf',
+    /(?i:Debian|Ubuntu|Mint)/ => '/etc/squid/squid.conf',
     default => '/etc/squid/squid.conf',
   }
 
@@ -63,24 +63,24 @@ class squid3::params {
   }
 
   $config_file_init = $::operatingsystem ? {
-    /(?i:Debian|Ubuntu|Mint)/ => '/etc/default/squid3',
-    default                   => '/etc/sysconfig/squid3',
+    /(?i:Debian|Ubuntu|Mint)/ => '/etc/default/squid',
+    default                   => '/etc/sysconfig/squid',
   }
 
   $pid_file = $::operatingsystem ? {
-    default => '/var/run/squid3.pid',
+    default => '/var/run/squid.pid',
   }
 
   $data_dir = $::operatingsystem ? {
-    default => '/etc/squid3',
+    default => '/etc/squid',
   }
 
   $log_dir = $::operatingsystem ? {
-    default => '/var/log/squid3',
+    default => '/var/log/squid',
   }
 
   $log_file = $::operatingsystem ? {
-    default => '/var/log/squid3/squid3.log',
+    default => '/var/log/squid/squid.log',
   }
 
   $port = '42'
@@ -116,8 +116,11 @@ class squid3::params {
   $squid_template = ''
 
   ## squid.conf parameters
-  visible_hostname = ''
-  squid_ip = ''
-  squid_port = ''
+  $visible_hostname = ''
+  $squid_ip = ''
+  $squid_port = ''
+  $cache_peer = ''
+  $sibling = ''
+  $sibling_name = ''
 
 }

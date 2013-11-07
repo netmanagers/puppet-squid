@@ -1,6 +1,6 @@
-# = Class: squid3
+# = Class: squid
 #
-# This is the main squid3 class
+# This is the main squid class
 #
 #
 # == Parameters
@@ -10,38 +10,38 @@
 #
 # [*my_class*]
 #   Name of a custom class to autoload to manage module's customizations
-#   If defined, squid3 class will automatically "include $my_class"
-#   Can be defined also by the (top scope) variable $squid3_myclass
+#   If defined, squid class will automatically "include $my_class"
+#   Can be defined also by the (top scope) variable $squid_myclass
 #
 # [*source*]
 #   Sets the content of source parameter for main configuration file
-#   If defined, squid3 main config file will have the param: source => $source
-#   Can be defined also by the (top scope) variable $squid3_source
+#   If defined, squid main config file will have the param: source => $source
+#   Can be defined also by the (top scope) variable $squid_source
 #
 # [*source_dir*]
-#   If defined, the whole squid3 configuration directory content is retrieved
+#   If defined, the whole squid configuration directory content is retrieved
 #   recursively from the specified source
 #   (source => $source_dir , recurse => true)
-#   Can be defined also by the (top scope) variable $squid3_source_dir
+#   Can be defined also by the (top scope) variable $squid_source_dir
 #
 # [*source_dir_purge*]
 #   If set to true (default false) the existing configuration directory is
 #   mirrored with the content retrieved from source_dir
 #   (source => $source_dir , recurse => true , purge => true)
-#   Can be defined also by the (top scope) variable $squid3_source_dir_purge
+#   Can be defined also by the (top scope) variable $squid_source_dir_purge
 #
 # [*template*]
 #   Sets the path to the template to use as content for main configuration file
-#   If defined, squid3 main config file has: content => content("$template")
+#   If defined, squid main config file has: content => content("$template")
 #   Note source and template parameters are mutually exclusive: don't use both
-#   Can be defined also by the (top scope) variable $squid3_template
+#   Can be defined also by the (top scope) variable $squid_template
 #
 # [*options*]
 #   An hash of custom options to be used in templates for arbitrary settings.
-#   Can be defined also by the (top scope) variable $squid3_options
+#   Can be defined also by the (top scope) variable $squid_options
 #
 # [*service_autorestart*]
-#   Automatically restarts the squid3 service when there is a change in
+#   Automatically restarts the squid service when there is a change in
 #   configuration files. Default: true, Set to false if you don't want to
 #   automatically restart the service.
 #
@@ -53,76 +53,76 @@
 #
 # [*absent*]
 #   Set to 'true' to remove package(s) installed by module
-#   Can be defined also by the (top scope) variable $squid3_absent
+#   Can be defined also by the (top scope) variable $squid_absent
 #
 # [*disable*]
 #   Set to 'true' to disable service(s) managed by module
-#   Can be defined also by the (top scope) variable $squid3_disable
+#   Can be defined also by the (top scope) variable $squid_disable
 #
 # [*disableboot*]
 #   Set to 'true' to disable service(s) at boot, without checks if it's running
 #   Use this when the service is managed by a tool like a cluster software
-#   Can be defined also by the (top scope) variable $squid3_disableboot
+#   Can be defined also by the (top scope) variable $squid_disableboot
 #
 # [*monitor*]
 #   Set to 'true' to enable monitoring of the services provided by the module
-#   Can be defined also by the (top scope) variables $squid3_monitor
+#   Can be defined also by the (top scope) variables $squid_monitor
 #   and $monitor
 #
 # [*monitor_tool*]
 #   Define which monitor tools (ad defined in Example42 monitor module)
-#   you want to use for squid3 checks
-#   Can be defined also by the (top scope) variables $squid3_monitor_tool
+#   you want to use for squid checks
+#   Can be defined also by the (top scope) variables $squid_monitor_tool
 #   and $monitor_tool
 #
 # [*monitor_target*]
 #   The Ip address or hostname to use as a target for monitoring tools.
 #   Default is the fact $ipaddress
-#   Can be defined also by the (top scope) variables $squid3_monitor_target
+#   Can be defined also by the (top scope) variables $squid_monitor_target
 #   and $monitor_target
 #
 # [*puppi*]
 #   Set to 'true' to enable creation of module data files that are used by puppi
-#   Can be defined also by the (top scope) variables $squid3_puppi and $puppi
+#   Can be defined also by the (top scope) variables $squid_puppi and $puppi
 #
 # [*puppi_helper*]
 #   Specify the helper to use for puppi commands. The default for this module
 #   is specified in params.pp and is generally a good choice.
 #   You can customize the output of puppi commands for this module using another
 #   puppi helper. Use the define puppi::helper to create a new custom helper
-#   Can be defined also by the (top scope) variables $squid3_puppi_helper
+#   Can be defined also by the (top scope) variables $squid_puppi_helper
 #   and $puppi_helper
 #
 # [*firewall*]
 #   Set to 'true' to enable firewalling of the services provided by the module
-#   Can be defined also by the (top scope) variables $squid3_firewall
+#   Can be defined also by the (top scope) variables $squid_firewall
 #   and $firewall
 #
 # [*firewall_tool*]
 #   Define which firewall tool(s) (ad defined in Example42 firewall module)
-#   you want to use to open firewall for squid3 port(s)
-#   Can be defined also by the (top scope) variables $squid3_firewall_tool
+#   you want to use to open firewall for squid port(s)
+#   Can be defined also by the (top scope) variables $squid_firewall_tool
 #   and $firewall_tool
 #
 # [*firewall_src*]
-#   Define which source ip/net allow for firewalling squid3. Default: 0.0.0.0/0
-#   Can be defined also by the (top scope) variables $squid3_firewall_src
+#   Define which source ip/net allow for firewalling squid. Default: 0.0.0.0/0
+#   Can be defined also by the (top scope) variables $squid_firewall_src
 #   and $firewall_src
 #
 # [*firewall_dst*]
 #   Define which destination ip to use for firewalling. Default: $ipaddress
-#   Can be defined also by the (top scope) variables $squid3_firewall_dst
+#   Can be defined also by the (top scope) variables $squid_firewall_dst
 #   and $firewall_dst
 #
 # [*debug*]
 #   Set to 'true' to enable modules debugging
-#   Can be defined also by the (top scope) variables $squid3_debug and $debug
+#   Can be defined also by the (top scope) variables $squid_debug and $debug
 #
 # [*audit_only*]
 #   Set to 'true' if you don't intend to override existing configuration files
 #   and want to audit the difference between existing files and the ones
 #   managed by Puppet.
-#   Can be defined also by the (top scope) variables $squid3_audit_only
+#   Can be defined also by the (top scope) variables $squid_audit_only
 #   and $audit_only
 #
 # [*noops*]
@@ -130,30 +130,30 @@
 #   Basically you can run a dryrun for this specific module if you set
 #   this to true. Default: false
 #
-# Default class params - As defined in squid3::params.
+# Default class params - As defined in squid::params.
 # Note that these variables are mostly defined and used in the module itself,
 # overriding the default values might not affected all the involved components.
 # Set and override them only if you know what you're doing.
 # Note also that you can't override/set them via top scope variables.
 #
 # [*package*]
-#   The name of squid3 package
+#   The name of squid package
 #
 # [*service*]
-#   The name of squid3 service
+#   The name of squid service
 #
 # [*service_status*]
-#   If the squid3 service init script supports status argument
+#   If the squid service init script supports status argument
 #
 # [*process*]
-#   The name of squid3 process
+#   The name of squid process
 #
 # [*process_args*]
-#   The name of squid3 arguments. Used by puppi and monitor.
-#   Used only in case the squid3 process name is generic (java, ruby...)
+#   The name of squid arguments. Used by puppi and monitor.
+#   Used only in case the squid process name is generic (java, ruby...)
 #
 # [*process_user*]
-#   The name of the user squid3 runs with. Used by puppi and monitor.
+#   The name of the user squid runs with. Used by puppi and monitor.
 #
 # [*config_dir*]
 #   Main configuration directory. Used by puppi
@@ -189,17 +189,18 @@
 #   The listening port, if any, of the service.
 #   This is used by monitor, firewall and puppi (optional) components
 #   Note: This doesn't necessarily affect the service configuration file
-#   Can be defined also by the (top scope) variable $squid3_port
+#   Can be defined also by the (top scope) variable $squid_port
 #
 # [*protocol*]
 #   The protocol used by the the service.
 #   This is used by monitor, firewall and puppi (optional) components
-#   Can be defined also by the (top scope) variable $squid3_protocol
+#   Can be defined also by the (top scope) variable $squid_protocol
 #
 #
 # See README for usage patterns.
 #
-class squid3 (
+
+class squid (
   $my_class            = params_lookup( 'my_class' ),
   $source              = params_lookup( 'source' ),
   $source_dir          = params_lookup( 'source_dir' ),
@@ -243,8 +244,11 @@ class squid3 (
   $protocol            = params_lookup( 'protocol' ),
   $visible_hostname    = params_lookup( 'visible_hostname' ),
   $squid_ip            = params_lookup( 'squid_ip' ),
-  $squid_port          = params_lookup( 'squid_port' )
-  ) inherits squid3::params {
+  $squid_port          = params_lookup( 'squid_port' ),
+  $cache_peer          = params_lookup( 'cache_peer' ),
+  $sibling             = params_lookup( 'sibling' ),
+  $sibling_name        = params_lookup( 'sibling_name' )
+  ) inherits squid::params {
 
   $bool_source_dir_purge=any2bool($source_dir_purge)
   $bool_service_autorestart=any2bool($service_autorestart)
@@ -259,200 +263,195 @@ class squid3 (
   $bool_noops=any2bool($noops)
 
   ### Definition of some variables used in the module
-  $manage_package = $squid3::bool_absent ? {
+  $manage_package = $squid::bool_absent ? {
     true  => 'absent',
-    false => $squid3::version,
+    false => $squid::version,
   }
 
-  $manage_service_enable = $squid3::bool_disableboot ? {
+  $manage_service_enable = $squid::bool_disableboot ? {
     true    => false,
-    default => $squid3::bool_disable ? {
+    default => $squid::bool_disable ? {
       true    => false,
-      default => $squid3::bool_absent ? {
+      default => $squid::bool_absent ? {
         true  => false,
         false => true,
       },
     },
   }
 
-  $manage_service_ensure = $squid3::bool_disable ? {
+  $manage_service_ensure = $squid::bool_disable ? {
     true    => 'stopped',
-    default =>  $squid3::bool_absent ? {
+    default =>  $squid::bool_absent ? {
       true    => 'stopped',
       default => 'running',
     },
   }
 
-  $manage_service_autorestart = $squid3::bool_service_autorestart ? {
-    true    => Service[squid3],
+  $manage_service_autorestart = $squid::bool_service_autorestart ? {
+    true    => Service[squid],
     false   => undef,
   }
 
-  $manage_file = $squid3::bool_absent ? {
+  $manage_file = $squid::bool_absent ? {
     true    => 'absent',
     default => 'present',
   }
 
-  if $squid3::bool_absent == true
-  or $squid3::bool_disable == true
-  or $squid3::bool_disableboot == true {
+  if $squid::bool_absent == true
+  or $squid::bool_disable == true
+  or $squid::bool_disableboot == true {
     $manage_monitor = false
   } else {
     $manage_monitor = true
   }
 
-  if $squid3::bool_absent == true
-  or $squid3::bool_disable == true {
+  if $squid::bool_absent == true
+  or $squid::bool_disable == true {
     $manage_firewall = false
   } else {
     $manage_firewall = true
   }
 
-  $manage_audit = $squid3::bool_audit_only ? {
+  $manage_audit = $squid::bool_audit_only ? {
     true  => 'all',
     false => undef,
   }
 
-  $manage_file_replace = $squid3::bool_audit_only ? {
+  $manage_file_replace = $squid::bool_audit_only ? {
     true  => false,
     false => true,
   }
 
-  $manage_file_source = $squid3::source ? {
+  $manage_file_source = $squid::source ? {
     ''        => undef,
-    default   => $squid3::source,
+    default   => $squid::source,
   }
 
-  $manage_file_content = $squid3::template ? {
+  $manage_file_content = $squid::template ? {
     ''        => undef,
-    default   => template($squid3::template),
-  }
-
-  $manage_file_content = $squid3::squid_template ? {
-    ''      => undef,
-    default => template($squid3::squid_template),
+    default   => template($squid::template),
   }
 
   ### Managed resources
-  package { $squid3::package:
-    ensure  => $squid3::manage_package,
-    noop    => $squid3::bool_noops,
+  package { $squid::package:
+    ensure  => $squid::manage_package,
+    noop    => $squid::bool_noops,
   }
 
-  service { 'squid3':
-    ensure     => $squid3::manage_service_ensure,
-    name       => $squid3::service,
-    enable     => $squid3::manage_service_enable,
-    hasstatus  => $squid3::service_status,
-    pattern    => $squid3::process,
-    require    => Package[$squid3::package],
-    noop       => $squid3::bool_noops,
+  service { 'squid':
+    ensure     => $squid::manage_service_ensure,
+    name       => $squid::service,
+    enable     => $squid::manage_service_enable,
+    hasstatus  => $squid::service_status,
+    pattern    => $squid::process,
+    require    => Package[$squid::package],
+    noop       => $squid::bool_noops,
   }
 
-  file { 'squid3.conf':
-    ensure  => $squid3::manage_file,
-    path    => $squid3::config_file,
-    mode    => $squid3::config_file_mode,
-    owner   => $squid3::config_file_owner,
-    group   => $squid3::config_file_group,
-    require => Package[$squid3::package],
-    notify  => $squid3::manage_service_autorestart,
-    source  => $squid3::manage_file_source,
-    content => $squid3::manage_file_content,
-    replace => $squid3::manage_file_replace,
-    audit   => $squid3::manage_audit,
-    noop    => $squid3::bool_noops,
+  file { 'squid.conf':
+    ensure  => $squid::manage_file,
+    path    => $squid::config_file,
+    mode    => $squid::config_file_mode,
+    owner   => $squid::config_file_owner,
+    group   => $squid::config_file_group,
+    require => Package[$squid::package],
+    notify  => $squid::manage_service_autorestart,
+    source  => $squid::manage_file_source,
+    content => $squid::manage_file_content,
+    replace => $squid::manage_file_replace,
+    audit   => $squid::manage_audit,
+    noop    => $squid::bool_noops,
   }
 
-  # The whole squid3 configuration directory can be recursively overriden
-  if $squid3::source_dir {
-    file { 'squid3.dir':
+  # The whole squid configuration directory can be recursively overriden
+  if $squid::source_dir {
+    file { 'squid.dir':
       ensure  => directory,
-      path    => $squid3::config_dir,
-      require => Package[$squid3::package],
-      notify  => $squid3::manage_service_autorestart,
-      source  => $squid3::source_dir,
+      path    => $squid::config_dir,
+      require => Package[$squid::package],
+      notify  => $squid::manage_service_autorestart,
+      source  => $squid::source_dir,
       recurse => true,
-      purge   => $squid3::bool_source_dir_purge,
-      force   => $squid3::bool_source_dir_purge,
-      replace => $squid3::manage_file_replace,
-      audit   => $squid3::manage_audit,
-      noop    => $squid3::bool_noops,
+      purge   => $squid::bool_source_dir_purge,
+      force   => $squid::bool_source_dir_purge,
+      replace => $squid::manage_file_replace,
+      audit   => $squid::manage_audit,
+      noop    => $squid::bool_noops,
     }
   }
 
 
   ### Include custom class if $my_class is set
-  if $squid3::my_class {
-    include $squid3::my_class
+  if $squid::my_class {
+    include $squid::my_class
   }
 
 
   ### Provide puppi data, if enabled ( puppi => true )
-  if $squid3::bool_puppi == true {
+  if $squid::bool_puppi == true {
     $classvars=get_class_args()
-    puppi::ze { 'squid3':
-      ensure    => $squid3::manage_file,
+    puppi::ze { 'squid':
+      ensure    => $squid::manage_file,
       variables => $classvars,
-      helper    => $squid3::puppi_helper,
-      noop      => $squid3::bool_noops,
+      helper    => $squid::puppi_helper,
+      noop      => $squid::bool_noops,
     }
   }
 
 
   ### Service monitoring, if enabled ( monitor => true )
-  if $squid3::bool_monitor == true {
-    if $squid3::port != '' {
-      monitor::port { "squid3_${squid3::protocol}_${squid3::port}":
-        protocol => $squid3::protocol,
-        port     => $squid3::port,
-        target   => $squid3::monitor_target,
-        tool     => $squid3::monitor_tool,
-        enable   => $squid3::manage_monitor,
-        noop     => $squid3::bool_noops,
+  if $squid::bool_monitor == true {
+    if $squid::port != '' {
+      monitor::port { "squid_${squid::protocol}_${squid::port}":
+        protocol => $squid::protocol,
+        port     => $squid::port,
+        target   => $squid::monitor_target,
+        tool     => $squid::monitor_tool,
+        enable   => $squid::manage_monitor,
+        noop     => $squid::bool_noops,
       }
     }
-    if $squid3::service != '' {
-      monitor::process { 'squid3_process':
-        process  => $squid3::process,
-        service  => $squid3::service,
-        pidfile  => $squid3::pid_file,
-        user     => $squid3::process_user,
-        argument => $squid3::process_args,
-        tool     => $squid3::monitor_tool,
-        enable   => $squid3::manage_monitor,
-        noop     => $squid3::bool_noops,
+    if $squid::service != '' {
+      monitor::process { 'squid_process':
+        process  => $squid::process,
+        service  => $squid::service,
+        pidfile  => $squid::pid_file,
+        user     => $squid::process_user,
+        argument => $squid::process_args,
+        tool     => $squid::monitor_tool,
+        enable   => $squid::manage_monitor,
+        noop     => $squid::bool_noops,
       }
     }
   }
 
 
   ### Firewall management, if enabled ( firewall => true )
-  if $squid3::bool_firewall == true and $squid3::port != '' {
-    firewall { "squid3_${squid3::protocol}_${squid3::port}":
-      source      => $squid3::firewall_src,
-      destination => $squid3::firewall_dst,
-      protocol    => $squid3::protocol,
-      port        => $squid3::port,
+  if $squid::bool_firewall == true and $squid::port != '' {
+    firewall { "squid_${squid::protocol}_${squid::port}":
+      source      => $squid::firewall_src,
+      destination => $squid::firewall_dst,
+      protocol    => $squid::protocol,
+      port        => $squid::port,
       action      => 'allow',
       direction   => 'input',
-      tool        => $squid3::firewall_tool,
-      enable      => $squid3::manage_firewall,
-      noop        => $squid3::bool_noops,
+      tool        => $squid::firewall_tool,
+      enable      => $squid::manage_firewall,
+      noop        => $squid::bool_noops,
     }
   }
 
 
   ### Debugging, if enabled ( debug => true )
-  if $squid3::bool_debug == true {
-    file { 'debug_squid3':
-      ensure  => $squid3::manage_file,
-      path    => "${settings::vardir}/debug-squid3",
+  if $squid::bool_debug == true {
+    file { 'debug_squid':
+      ensure  => $squid::manage_file,
+      path    => "${settings::vardir}/debug-squid",
       mode    => '0640',
       owner   => 'root',
       group   => 'root',
       content => inline_template('<%= scope.to_hash.reject { |k,v| k.to_s =~ /(uptime.*|path|timestamp|free|.*password.*|.*psk.*|.*key)/ }.to_yaml %>'),
-      noop    => $squid3::bool_noops,
+      noop    => $squid::bool_noops,
     }
   }
 

@@ -1,4 +1,4 @@
 # Default class installation
 #
-class { 'squid3':
+class { 'squid':
 }
