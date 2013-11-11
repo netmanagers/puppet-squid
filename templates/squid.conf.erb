@@ -7,6 +7,44 @@ http_port <%= scope.lookupvar('squid::squid_ip') %> <%= scope.lookupvar('squid::
 
 cache_peer <%= scope.lookupvar('squid::cache_peer') %> sibling <%= scope.lookupvar('squid::sibling') %> proxy-only name=<%= scope.lookupvar('squid::sibling_name') %>
 
+cache_mem <%= scope.lookupvar('squid::cache_mem') %>
+
+cache_swap_low <%= scope.lookupvar('squid::cache_swap_low') %> 
+cache_swap_high <%= scope.lookupvar('squid::cache_swap_high') %>
+
+maximum_object_size <%= scope.lookupvar('squid::maximum_object_size') %>
+maximum_object_size_in_memory <%= scope.lookupvar('squid::maximum_object_size_in_memory') %>
+
+cache_replacement_policy <%= scope.lookupvar('squid::cache_replacement_policy') %>
+
+error_directory <%= scope.lookupvar('squid::error_directory') %>
+
+half_closed_clients <%= scope.lookupvar('squid::half_closed_clients') %>
+shutdown_lifetime <%= scope.lookupvar('squid::shutdown_lifetime') %>
+
+buffered_logs <%= scope.lookupvar('squid::buffered_logs') %>
+
+pipeline_prefetch <%= scope.lookupvar('squid::pipeline_prefetch') %>
+client_persistent_connections <%= scope.lookupvar('squid::client_persistent_connections') %>
+dead_peer_timeout <%= scope.lookupvar('squid::dead_peer_timeout') %>
+
+quick_abort_min <%= scope.lookupvar('squid::quick_abort_min') %>
+quick_abort_max <%= scope.lookupvar('squid::quick_abort_max') %>
+quick_abort_pct <%= scope.lookupvar('squid::quick_abort_pct') %>
+
+via <%= scope.lookupvar('squid::via') %>
+forwarded_for <%= scope.lookupvar('squid::forwarded_for') %>
+
+hierarchy_stoplist <%= scope.lookupvar('squid::hierarchy_stoplist') %>
+
+cache_dir <%= scope.lookupvar('squid::cache_dir') %>
+
+cache_access_log <%= scope.lookupvar('squid::cache_access_log') %>
+cache_store_log <%= scope.lookupvar('squid::cache_store_log') %>
+ftp_passive <%= scope.lookupvar('squid::ftp_passive') %>
+
+snmp_port <%= scope.lookupvar('squid::snmp_port') %>
+coredump_dir <%= scope.lookupvar('squid::coredump_dir') %>
 
 include /etc/squid/conf.d/*.conf
 
