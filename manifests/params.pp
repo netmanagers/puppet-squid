@@ -118,8 +118,8 @@ class squid::params {
 
   ## squid.conf parameters
   $visible_hostname = ''
-  $squid_ip = ''
-  $squid_port = ''
+  $squid_ip = '172.0.0.1'
+  $squid_port = '3128'
   $cache_peer = ''
   $sibling = ''
   $sibling_name = ''

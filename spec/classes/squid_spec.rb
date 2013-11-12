@@ -68,6 +68,97 @@ describe 'squid' do
     it { should contain_firewall('squid_tcp_42').with_enable('true') }
   end
 
+  describe 'Test squid.conf with standard options' do
+    let(:facts) do
+      {:squid_template => 'squid/squid.conf.erb'} 
+    end
+    let(:expected) do
+'# This file is managed by Puppet. DO NOT EDIT.
+
+http_port 127.0.0.1:3128
+
+include /etc/squid/conf.d/*.conf
+'
+    end
+    it { should contain_file('squid.conf').with_content(expected) }
+  end
+
+  describe 'Test squid.conf with full options' do
+    let(:facts) do
+      {:squid_template => 'squid/squid.conf.erb',
+       :visible_hostname => 'admin@netmanagers.com.ar',
+       :squid_ip => '10.0.0.1',
+       :squid_port => '8080',
+       :cache_peer => '10.0.0.2',
+       :sibling => '3129 3130',
+       :sibling_name => 'another',
+       :icp_port => '3130',
+       :cache_mem => '8192 MB',
+       :cache_swap_low => '95',
+       :cache_swap_high => '97',
+       :maximum_object_size => '196608 KB',
+       :maximum_object_size_in_memory => '12000 KB',
+       :cache_replacement_policy => 'heap LFUDA',
+       :error_directory => '/usr/share/squid3/errors/es',
+       :half_closed_clients => 'off',
+       :shutdown_lifetime => '1 second',
+       :buffered_logs => 'on',
+       :pipeline_prefetch => 'off',
+       :client_persistent_connections => 'off',
+       :dead_peer_timeout => '30 seconds',
+       :quick_abort_min => '0 KB',
+       :quick_abort_max => '0 KB',
+       :quick_abort_pct => '0',
+       :via => 'on',
+       :forwarded_for => 'on',
+       :hierarchy_stoplist => 'cgi-bin ?',
+       :cache_dir => 'diskd /var/spool/squid3 100000 16 256',
+       :cache_access_log => 'stdio:/var/log/squid3/access.log',
+       :cache_store_log => 'none',
+       :ftp_passive => 'on',
+       :snmp_port => '3401',
+       :coredump_dir => '/var/spool/squid3'
+      }
+    end
+    let(:expected) do
+'# This file is managed by Puppet. DO NOT EDIT.
+
+visible_hostname admin@netmanagers.com.ar
+http_port 127.0.0.1:3128
+cache_peer = 127.0.0.2 sibling = 3129 3130 proxy-only name = another
+icp_port = 3130
+cache_mem = 8192 MB
+cache_swap_low = 95
+cache_swap_high = 97
+maximum_object_size = 196608 KB
+maximum_object_size_in_memory = 12000 KB
+cache_replacement_policy = heap LFUDA
+error_directory = /usr/share/squid3/errors/es
+half_closed_clients = off
+shutdown_lifetime = 1 second
+buffered_logs = on
+pipeline_prefetch = off
+client_persistent_connections = off
+dead_peer_timeout = 30 seconds
+quick_abort_min = 0 KB
+quick_abort_max = 0 KB
+quick_abort_pct = 0
+via = on
+forwarded_for = on
+hierarchy_stoplist = cgi-bin ?
+cache_dir = diskd /var/spool/squid3 100000 16 256
+cache_access_log = stdio:/var/log/squid3/access.log
+cache_store_log = none
+ftp_passive = on
+snmp_port = 3401
+coredump_dir = /var/spool/squid3
+
+include /etc/squid/conf.d/*.conf
+'
+    end
+    it { should contain_file('squid.conf').with_content(expected) }
+  end
+
   describe 'Test noops mode' do
     let(:params) { {:noops => true, :monitor => true , :firewall => true, :port => '42', :protocol => 'tcp'} }
     it { should contain_package('squid').with_noop('true') }
