@@ -1,7 +1,6 @@
 # This file is managed by Puppet. DO NOT EDIT.
 
 <% if scope.lookupvar('squid::visible_hostname') != '' -%>
-
 visible_hostname "<%= scope.lookupvar('squid::visible_hostname') %>"
 <% end -%>
 http_port <%= scope.lookupvar('squid::squid_ip') %>:<%= scope.lookupvar('squid::squid_port') %>
