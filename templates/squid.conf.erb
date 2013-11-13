@@ -14,7 +14,7 @@ icp_port <%= scope.lookupvar('squid::icp_port') %>
 cache_mem <%= scope.lookupvar('squid::cache_mem') %>
 <% end -%>
 <% if scope.lookupvar('squid::cache_swap_low') != '' -%>
-cache_swap_low <%= scope.lookupvar('squid::cache_swap_low') %> 
+cache_swap_low <%= scope.lookupvar('squid::cache_swap_low') %>
 <% end -%>
 <% if scope.lookupvar('squid::cache_swap_high') != '' -%>
 cache_swap_high <%= scope.lookupvar('squid::cache_swap_high') %>
