@@ -1,52 +1,46 @@
 # This file is managed by Puppet. DO NOT EDIT.
 
 <% if scope.lookupvar('squid::visible_hostname') != '' -%>
-visible_hostname "<%= scope.lookupvar('squid::visible_hostname') %>"
+visible_hostname <%= scope.lookupvar('squid::visible_hostname') %>
 <% end -%>
 http_port <%= scope.lookupvar('squid::squid_ip') %>:<%= scope.lookupvar('squid::squid_port') %>
 <% if scope.lookupvar('squid::cache_peer') != '' -%>
-
 cache_peer <%= scope.lookupvar('squid::cache_peer') %> sibling <%= scope.lookupvar('squid::sibling') %> proxy-only name=<%= scope.lookupvar('squid::sibling_name') %>
 <% end -%>
+<% if scope.lookupvar('squid::icp_port') != '' -%>
+icp_port <%= scope.lookupvar('squid::icp_port') %>
+<% end -%>
 <% if scope.lookupvar('squid::cache_mem') != '' -%>
-
 cache_mem <%= scope.lookupvar('squid::cache_mem') %>
 <% end -%>
 <% if scope.lookupvar('squid::cache_swap_low') != '' -%>
-
 cache_swap_low <%= scope.lookupvar('squid::cache_swap_low') %> 
 <% end -%>
 <% if scope.lookupvar('squid::cache_swap_high') != '' -%>
 cache_swap_high <%= scope.lookupvar('squid::cache_swap_high') %>
 <% end -%>
 <% if scope.lookupvar('squid::maximum_object_size') != '' -%>
-
 maximum_object_size <%= scope.lookupvar('squid::maximum_object_size') %>
 <% end -%>
 <% if scope.lookupvar('squid::maximum_object_size_in_memory') != '' -%>
 maximum_object_size_in_memory <%= scope.lookupvar('squid::maximum_object_size_in_memory') %>
 <% end -%>
 <% if scope.lookupvar('squid::cache_replacement_policy') != '' -%>
-
 cache_replacement_policy <%= scope.lookupvar('squid::cache_replacement_policy') %>
 <% end -%>
 <% if scope.lookupvar('squid::error_directory') != '' -%>
-
 error_directory <%= scope.lookupvar('squid::error_directory') %>
 <% end -%>
 <% if scope.lookupvar('squid::half_closed_clients') != '' -%>
-
 half_closed_clients <%= scope.lookupvar('squid::half_closed_clients') %>
 <% end -%>
 <% if scope.lookupvar('squid::shutdown_lifetime') != '' -%>
 shutdown_lifetime <%= scope.lookupvar('squid::shutdown_lifetime') %>
 <% end -%>
 <% if scope.lookupvar('squid::buffered_logs') != '' -%>
-
 buffered_logs <%= scope.lookupvar('squid::buffered_logs') %>
 <% end -%>
 <% if scope.lookupvar('squid::pipeline_prefetch') != '' -%>
-
 pipeline_prefetch <%= scope.lookupvar('squid::pipeline_prefetch') %>
 <% end -%>
 <% if scope.lookupvar('squid::client_persistent_connections') != '' -%>
@@ -56,7 +50,6 @@ client_persistent_connections <%= scope.lookupvar('squid::client_persistent_conn
 dead_peer_timeout <%= scope.lookupvar('squid::dead_peer_timeout') %>
 <% end -%>
 <% if scope.lookupvar('squid::quick_abort_min') != '' -%>
-
 quick_abort_min <%= scope.lookupvar('squid::quick_abort_min') %>
 <% end -%>
 <% if scope.lookupvar('squid::quick_abort_max') != '' -%>
@@ -66,37 +59,30 @@ quick_abort_max <%= scope.lookupvar('squid::quick_abort_max') %>
 quick_abort_pct <%= scope.lookupvar('squid::quick_abort_pct') %>
 <% end -%>
 <% if scope.lookupvar('squid::via') != '' -%>
-
 via <%= scope.lookupvar('squid::via') %>
 <% end -%>
 <% if scope.lookupvar('squid::forwarded_for') != '' -%>
 forwarded_for <%= scope.lookupvar('squid::forwarded_for') %>
 <% end -%>
 <% if scope.lookupvar('squid::hierarchy_stoplist') != '' -%>
-
 hierarchy_stoplist <%= scope.lookupvar('squid::hierarchy_stoplist') %>
 <% end -%>
 <% if scope.lookupvar('squid::cache_dir') != '' -%>
-
 cache_dir <%= scope.lookupvar('squid::cache_dir') %>
 <% end -%>
 <% if scope.lookupvar('squid::cache_access_log') != '' -%>
-
 cache_access_log <%= scope.lookupvar('squid::cache_access_log') %>
 <% end -%>
 <% if scope.lookupvar('squid::cache_store_log') != '' -%>
-
 cache_store_log <%= scope.lookupvar('squid::cache_store_log') %>
 <% end -%>
 <% if scope.lookupvar('squid::ftp_passive') != '' -%>
 ftp_passive <%= scope.lookupvar('squid::ftp_passive') %>
 <% end -%>
 <% if scope.lookupvar('squid::snmp_port') != '' -%>
-
 snmp_port <%= scope.lookupvar('squid::snmp_port') %>
 <% end -%>
 <% if scope.lookupvar('squid::coredump_dir') != '' -%>
-
 coredump_dir <%= scope.lookupvar('squid::coredump_dir') %>
 <% end -%>
 

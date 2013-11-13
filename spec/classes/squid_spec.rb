@@ -124,34 +124,34 @@ include /etc/squid/conf.d/*.conf
 '# This file is managed by Puppet. DO NOT EDIT.
 
 visible_hostname admin@netmanagers.com.ar
-http_port 127.0.0.1:3128
-cache_peer = 127.0.0.2 sibling = 3129 3130 proxy-only name = another
-icp_port = 3130
-cache_mem = 8192 MB
-cache_swap_low = 95
-cache_swap_high = 97
-maximum_object_size = 196608 KB
-maximum_object_size_in_memory = 12000 KB
-cache_replacement_policy = heap LFUDA
-error_directory = /usr/share/squid3/errors/es
-half_closed_clients = off
-shutdown_lifetime = 1 second
-buffered_logs = on
-pipeline_prefetch = off
-client_persistent_connections = off
-dead_peer_timeout = 30 seconds
-quick_abort_min = 0 KB
-quick_abort_max = 0 KB
-quick_abort_pct = 0
-via = on
-forwarded_for = on
-hierarchy_stoplist = cgi-bin ?
-cache_dir = diskd /var/spool/squid3 100000 16 256
-cache_access_log = stdio:/var/log/squid3/access.log
-cache_store_log = none
-ftp_passive = on
-snmp_port = 3401
-coredump_dir = /var/spool/squid3
+http_port 10.0.0.1:8080
+cache_peer 10.0.0.2 sibling 3129 3130 proxy-only name=another
+icp_port 3130
+cache_mem 8192 MB
+cache_swap_low 95
+cache_swap_high 97
+maximum_object_size 196608 KB
+maximum_object_size_in_memory 12000 KB
+cache_replacement_policy heap LFUDA
+error_directory /usr/share/squid3/errors/es
+half_closed_clients off
+shutdown_lifetime 1 second
+buffered_logs on
+pipeline_prefetch off
+client_persistent_connections off
+dead_peer_timeout 30 seconds
+quick_abort_min 0 KB
+quick_abort_max 0 KB
+quick_abort_pct 0
+via on
+forwarded_for on
+hierarchy_stoplist cgi-bin ?
+cache_dir diskd /var/spool/squid3 100000 16 256
+cache_access_log stdio:/var/log/squid3/access.log
+cache_store_log none
+ftp_passive on
+snmp_port 3401
+coredump_dir /var/spool/squid3
 
 include /etc/squid/conf.d/*.conf
 '
