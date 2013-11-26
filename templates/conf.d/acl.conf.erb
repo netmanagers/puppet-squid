@@ -1,0 +1,7 @@
+# This file is managed by Puppet. DO NOT EDIT.
+
+<% if @type_params == '' -%>
+acl <%= @name %> <%= @type %> "<%= @path %>"
+<% else -%>
+acl <%= @name %> <%= @type %> <%= @type_params %> "<%= @path %>"
+<% end -%>
