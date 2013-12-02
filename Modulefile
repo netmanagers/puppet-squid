@@ -1,7 +1,8 @@
 name 'example42-squid'
-version '2.0.10'
+version '0.0.10'
 
-author 'Alessandro Franceschi'
+author 'Sebastian Quaino'
+author 'Javier Bertoli'
 license 'Apache2'
 project_page 'http://www.example42.com'
 source 'https://github.com/example42/puppet-squid'
