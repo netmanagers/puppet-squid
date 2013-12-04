@@ -218,11 +218,13 @@ include /etc/squid/conf.d/*.conf
   end
 
   describe 'Test Firewall Tools Integration' do
+    let(:facts) { {:concat_basedir => '/var/lib/puppet/concat'} }
     let(:params) { {:firewall => true, :firewall_tool => "iptables" , :protocol => "tcp" , :port => "42" } }
     it { should contain_firewall('squid_tcp_42').with_tool('iptables') }
   end
 
   describe 'Test OldGen Module Set Integration' do
+    let(:facts) { {:concat_basedir => '/var/lib/puppet/concat'} }
     let(:params) { {:monitor => "yes" , :monitor_tool => "puppi" , :firewall => "yes" , :firewall_tool => "iptables" , :puppi => "yes" , :port => "42" , :protocol => 'tcp' } }
     it { should contain_monitor__process('squid_process').with_tool('puppi') }
     it { should contain_firewall('squid_tcp_42').with_tool('iptables') }
