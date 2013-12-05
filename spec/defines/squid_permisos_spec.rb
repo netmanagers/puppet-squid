@@ -14,16 +14,21 @@ describe 'squid::permisos' do
   describe 'Test permisos.conf is created with no options' do
     let(:params) do
       {
-        :name => 'sample1',
+        :name             => 'sample1',
+        :order            => '1',
+        :type_redirection => "always_direct",
+        :action           => "allow",
+        :acl1             => "acl1",
+        :acl2             => "acl2",
       }
     end
     let(:expected) do
 '# This file is managed by Puppet. DO NOT EDIT.
 
-Name = "sample1"
+always_direct allow acl1 acl2
 '
     end
-    it { should contain_file('permisos-sample1.conf').with_path('/etc/squid3/conf.d/permisos-sample1.conf').with_content(expected) }
+    it { should contain_file('permisos-sample1.conf').with_path('/etc/squid3/conf.d/1-permisos-sample1.conf').with_content(expected) }
   end
 
 end

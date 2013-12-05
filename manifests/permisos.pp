@@ -32,7 +32,7 @@ define squid::permisos (
 
   file { "permisos-${name}.conf":
     ensure  => $squid::manage_file,
-    path    => "${squid::config_dir}/${order}-permisos-${name}.conf",
+    path    => "${squid::config_dir}/conf.d/${order}-permisos-${name}.conf",
     mode    => $squid::config_file_mode,
     owner   => $squid::config_file_owner,
     group   => $squid::config_file_group,
