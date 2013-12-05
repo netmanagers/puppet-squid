@@ -1,13 +1,16 @@
-# Define squid::cond.d::acl.pp
+# Define squid::cond.d::permisos.pp
 #
-# Used to define acl
+# Used to define permisos
 #
-# type options = external, src, dst, dstdomain, url_regex, req_mime_type and  urlpath_regex
-define squid::conf.d::acl (
-  $type            = '',
-  $path            = '',
-  $type_params     = '',
-  $template        = 'squid/cond.d/acl.conf.erb'
+# type_redirection = '', always_direct, never_direct
+# action options = allow, deny
+define squid::permisos (
+  $type_redirection    = '',
+  $action              = '',
+  $acl1                = '',
+  $acl2                = '',
+  $order               = '',
+  $template            = 'squid/conf.d/permisos.conf.erb'
 ) {
 
   include squid
@@ -27,9 +30,9 @@ define squid::conf.d::acl (
     default => undef,
   }
 
-  file { "device-${name}.conf":
+  file { "permisos-${name}.conf":
     ensure  => $squid::manage_file,
-    path    => "${squid::configs_dir}/acl-${name}.conf",
+    path    => "${squid::config_dir}/${order}-permisos-${name}.conf",
     mode    => $squid::config_file_mode,
     owner   => $squid::config_file_owner,
     group   => $squid::config_file_group,

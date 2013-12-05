@@ -1,16 +1,18 @@
-# Define squid::cond.d::permisos.pp
+# Define squid::cond.d::delay_pools.pp
 #
-# Used to define permisos
+# Used to define delay_pools
 #
-# type_redirection = '', always_direct, never_direct
-# action options = allow, deny
-define squid::conf.d::permisos (
-  $type_redirection    = '',
-  $action              = '',
-  $acl1                = '',
-  $acl2                = '',
-  $order               = '',
-  $template            = 'squid/cond.d/permisos.conf.erb'
+define squid::delay_pools (
+  $media_type      = '',
+  $archive_device  = '',
+  $label_media     = 'yes',
+  $random_access   = 'yes',
+  $automatic_mount = 'yes',
+  $removable_media = 'no' ,
+  $always_open     = false,
+  $source          = '',
+  $options_hash    = {},
+  $template        = 'squid/conf.d/delay_pools.conf.erb'
 ) {
 
   include squid
@@ -32,7 +34,7 @@ define squid::conf.d::permisos (
 
   file { "device-${name}.conf":
     ensure  => $squid::manage_file,
-    path    => "${squid::configs_dir}/${order}-permisos-${name}.conf",
+    path    => "${squid::configs_dir}/delay_pool-${name}.conf",
     mode    => $squid::config_file_mode,
     owner   => $squid::config_file_owner,
     group   => $squid::config_file_group,
