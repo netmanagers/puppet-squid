@@ -1,13 +1,18 @@
-# Define squid::cond.d::acl.pp
+# Define squid::cond.d::delay_pools.pp
 #
-# Used to define acl
+# Used to define delay_pools
 #
-# type options = external, src, dst, dstdomain, url_regex, req_mime_type and  urlpath_regex
-define squid::conf.d::acl (
-  $type            = '',
-  $path            = '',
-  $type_params     = '',
-  $template        = 'squid/cond.d/acl.conf.erb'
+define squid::delay_pools (
+  $media_type      = '',
+  $archive_device  = '',
+  $label_media     = 'yes',
+  $random_access   = 'yes',
+  $automatic_mount = 'yes',
+  $removable_media = 'no' ,
+  $always_open     = false,
+  $source          = '',
+  $options_hash    = {},
+  $template        = 'squid/conf.d/delay_pools.conf.erb'
 ) {
 
   include squid
@@ -29,7 +34,7 @@ define squid::conf.d::acl (
 
   file { "device-${name}.conf":
     ensure  => $squid::manage_file,
-    path    => "${squid::configs_dir}/acl-${name}.conf",
+    path    => "${squid::configs_dir}/delay_pool-${name}.conf",
     mode    => $squid::config_file_mode,
     owner   => $squid::config_file_owner,
     group   => $squid::config_file_group,

@@ -4,13 +4,13 @@
 #
 # type_redirection = '', always_direct, never_direct
 # action options = allow, deny
-define squid::conf.d::permisos (
+define squid::permisos (
   $type_redirection    = '',
   $action              = '',
   $acl1                = '',
   $acl2                = '',
   $order               = '',
-  $template            = 'squid/cond.d/permisos.conf.erb'
+  $template            = 'squid/conf.d/permisos.conf.erb'
 ) {
 
   include squid
@@ -30,9 +30,9 @@ define squid::conf.d::permisos (
     default => undef,
   }
 
-  file { "device-${name}.conf":
+  file { "permisos-${name}.conf":
     ensure  => $squid::manage_file,
-    path    => "${squid::configs_dir}/${order}-permisos-${name}.conf",
+    path    => "${squid::config_dir}/conf.d/${order}-permisos-${name}.conf",
     mode    => $squid::config_file_mode,
     owner   => $squid::config_file_owner,
     group   => $squid::config_file_group,

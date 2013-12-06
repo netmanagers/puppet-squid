@@ -1,6 +1,6 @@
 require File.join(File.dirname(__FILE__), '..', 'spec_helper.rb')
 
-describe 'squid::conf.d::acl' do
+describe 'squid::acl' do
 
   let(:title) { 'squid::acl' }
   let(:node) { 'rspec.example42.com' }
@@ -11,21 +11,21 @@ describe 'squid::conf.d::acl' do
     }
   end
 
-  describe 'Test acl.conf is created with no options' do
+  describe 'Test acl.conf is created with full options' do
     let(:params) do
       {
-        :name => 'sample1',
+        :name  => 'sample1',
+        :type  => "src",
+        :vaalues => "/etc/squid/conf.d/denegados.lst",
       }
     end
     let(:expected) do
 '# This file is managed by Puppet. DO NOT EDIT.
 
-Device {
-  Name = "sample1"
-}
+acl sample1 src /etc/squid/conf.d/denegados.lst
 '
     end
-    it { should contain_file('squid-sample1.conf').with_path('/etc/squid/conf.d/squid-sample1.conf').with_content(expected) }
+    it { should contain_file('acl-sample1.conf').with_path('/etc/squid3/conf.d/acl-sample1.conf').with_content(expected) }
   end
 
 end
