@@ -200,8 +200,7 @@ include /etc/squid/conf.d/*.conf
   describe 'Test service autorestart' do
     let(:params) { {:service_autorestart => "no" } }
     it 'should not automatically restart the service, when service_autorestart => false' do
-      content = catalogue.resource('file', 'squid.conf').send(:parameters)[:notify]
-      content.should be_nil
+      should contain_file('squid.conf').without_notify
     end
   end
 
