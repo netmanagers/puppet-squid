@@ -3,31 +3,24 @@
 # Used to define delay_pools
 #
 define squid::delay_pools (
-  $media_type      = '',
-  $archive_device  = '',
-  $label_media     = 'yes',
-  $random_access   = 'yes',
-  $automatic_mount = 'yes',
-  $removable_media = 'no' ,
-  $always_open     = false,
-  $source          = '',
-  $options_hash    = {},
+  $size            = '',
+  $acl             = '',
   $template        = 'squid/conf.d/delay_pools.conf.erb'
 ) {
 
   include squid
 
-  $manage_device_file_content = $template ? {
+  $manage_delay_pools_file_content = $template ? {
     ''      => undef,
     default => template($template),
   }
 
-  $manage_device_file_source = $source ? {
+  $manage_delay_pools_file_source = $source ? {
     ''        => undef,
     default   => $source,
   }
 
-  $manage_storage_service_autorestart = $squid::bool_service_autorestart ? {
+  $manage_squid_service_autorestart = $squid::bool_service_autorestart ? {
     true    => Service[$squid_service],
     default => undef,
   }

@@ -25,7 +25,7 @@ define squid::permisos (
     default   => $source,
   }
 
-  $manage_storage_service_autorestart = $squid::bool_service_autorestart ? {
+  $manage_permisos_service_autorestart = $squid::bool_service_autorestart ? {
     true    => Service[$squid_service],
     default => undef,
   }
