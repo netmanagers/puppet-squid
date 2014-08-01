@@ -1,16 +1,16 @@
-# Define squid::cond.d::permisos.pp
+# Define squid::cond.d::acccess_rule.pp
 #
-# Used to define permisos
+# Used to define acccess_rules
 #
 # type_redirection = '', always_direct, never_direct
 # action options = allow, deny
-define squid::permisos (
+define squid::access_rule (
   $type_redirection    = '',
   $action              = '',
   $acl1                = '',
   $acl2                = '',
   $order               = '',
-  $template            = 'squid/conf.d/permisos.conf.erb'
+  $template            = 'squid/conf.d/access_rule.erb'
 ) {
 
   include squid
@@ -25,14 +25,14 @@ define squid::permisos (
     default   => $source,
   }
 
-  $manage_permisos_service_autorestart = $squid::bool_service_autorestart ? {
+  $manage_squid_service_autorestart = $squid::bool_service_autorestart ? {
     true    => Service[$squid_service],
     default => undef,
   }
 
-  file { "permisos-${name}.conf":
+  file { "access-rule-${name}.conf":
     ensure  => $squid::manage_file,
-    path    => "${squid::config_dir}/conf.d/${order}-permisos-${name}.conf",
+    path    => "${squid::config_dir}/conf.d/${order}-access-rule-${name}.conf",
     mode    => $squid::config_file_mode,
     owner   => $squid::config_file_owner,
     group   => $squid::config_file_group,
